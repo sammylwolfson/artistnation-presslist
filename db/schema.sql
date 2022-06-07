@@ -1,0 +1,3 @@
+DROP DATABASE IF DATABASE EXISTS press_list_db;
+
+CREATE DATABASE press_list_db;
