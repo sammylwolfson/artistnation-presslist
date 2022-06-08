@@ -1,10 +1,10 @@
 const router = require("express").Router();
-const Journalist = require("../../models/Journalist");
+const { Journalist } = require("../../models/");
 const withAuth = require('../../utils/auth');
 // /api/journalists routes
 
 // get all journalists
-router.get('/', withAuth, (req, res)=>{
+router.get('/', (req, res)=>{
     Journalist.findAll({
         attributes: [
             'id',
