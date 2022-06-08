@@ -45,3 +45,5 @@ Admin.init ({
     freezeTableName: true,
     modelName: 'admin'
 });
+
+module.exports = Admin;

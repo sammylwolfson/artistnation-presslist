@@ -1,5 +1,5 @@
 const sequelize = require('../config/connection');
-const { Model, DataTypes, } = require('sequelize')
+const { Model, DataTypes, Sequelize } = require('sequelize')
 
 class Journalist extends Model {}
 
