@@ -6,85 +6,99 @@ const journalistData = [
         first_name: casual.first_name,
         last_name: casual.last_name,
         company: casual.company_name,
-        email: casual.email
+        email: casual.email,
+        city: casual.city
     },
     {
         first_name: casual.first_name,
         last_name: casual.last_name,
         company: casual.company_name,
-        email: casual.email
+        email: casual.email,
+        city: casual.city
     },
     {
         first_name: casual.first_name,
         last_name: casual.last_name,
         company: casual.company_name,
-        email: casual.email
+        email: casual.email,
+        city: casual.city
     },
     {
         first_name: casual.first_name,
         last_name: casual.last_name,
         company: casual.company_name,
-        email: casual.email
+        email: casual.email,
+        city: casual.city
     },
     {
         first_name: casual.first_name,
         last_name: casual.last_name,
         company: casual.company_name,
-        email: casual.email
+        email: casual.email,
+        city: casual.city
     },
     {
         first_name: casual.first_name,
         last_name: casual.last_name,
         company: casual.company_name,
-        email: casual.email
+        email: casual.email,
+        city: casual.city
     },
     {
         first_name: casual.first_name,
         last_name: casual.last_name,
         company: casual.company_name,
-        email: casual.email
+        email: casual.email,
+        city: casual.city
     },
     {
         first_name: casual.first_name,
         last_name: casual.last_name,
         company: casual.company_name,
-        email: casual.email
+        email: casual.email,
+        city: casual.city
     },
     {
         first_name: casual.first_name,
         last_name: casual.last_name,
         company: casual.company_name,
-        email: casual.email
+        email: casual.email,
+        city: casual.city
     },
     {
         first_name: casual.first_name,
         last_name: casual.last_name,
         company: casual.company_name,
-        email: casual.email
+        email: casual.email,
+        city: casual.city
     },
     {
         first_name: casual.first_name,
         last_name: casual.last_name,
         company: casual.company_name,
-        email: casual.email
+        email: casual.email,
+        city: casual.city
     },
     {
         first_name: casual.first_name,
         last_name: casual.last_name,
         company: casual.company_name,
-        email: casual.email
+        email: casual.email,
+        city: casual.city
     },
     {
         first_name: casual.first_name,
         last_name: casual.last_name,
         company: casual.company_name,
-        email: casual.email
+        email: casual.email,
+        city: casual.city
     },
     {
         first_name: casual.first_name,
         last_name: casual.last_name,
         company: casual.company_name,
-        email: casual.email
+        email: casual.email,
+        city: casual.city
     }
 ];
 
