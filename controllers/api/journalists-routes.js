@@ -110,6 +110,7 @@ router.post("/", withAuth, (req, res) => {
     last_name: req.body.last_name,
     company: req.body.company,
     email: req.body.email,
+    city: req.body.city
   })
     .then((dbJournalistData) => res.json(dbJournalistData))
     .catch((err) => {
