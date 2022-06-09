@@ -60,6 +60,7 @@ router.post("/", (req, res) => {
 
 // admin login
 router.post("/login", (req, res) => {
+  console.log(req.body)
   Admin.findOne({
     where: {
       username: req.body.username,
