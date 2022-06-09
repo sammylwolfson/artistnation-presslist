@@ -23,11 +23,6 @@ Journalist.init(
       type: DataTypes.STRING,
       allowNull: true,
     },
-    created_at: {
-      type: "TIMESTAMP",
-      defaultValue: Sequelize.literal("CURRENT_TIMESTAMP"),
-      allowNull: false,
-    },
     email: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -38,6 +33,7 @@ Journalist.init(
     },
   },
   {
+    underscored: true,
     sequelize,
     timestamps: true,
     freezeTableName: true,
