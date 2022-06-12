@@ -23,7 +23,9 @@ async function searchFormHandler(event) {
 
   if (response.ok) {
     // verify the route to all journalists------------------------------------------!!!!!!!!!!!!!
-    document.location("/journalists");
+    document.location.replace("/journalists");
+  } else {
+    alert(response.statusText);
   }
 }
 

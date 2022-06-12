@@ -1,8 +1,12 @@
 const router = require("express").Router();
 const sequelize = require("../config/connection");
-const {Journalist} = require("../models")
+const { Journalist } = require("../models");
 
 router.get("/", (req, res) => {
+  if (!req.session.loggedIn) {
+    res.redirect("/login");
+    return;
+  }
   res.render("homepage");
 });
 
@@ -27,9 +31,14 @@ router.get("/journalists", (req, res) => {
     ],
   })
     .then((dbJournalistData) => {
-      const journalists = dbJournalistData.map((journalist) => journalist.get({ plain: true }));
-     res.render("journalists",{journalists,loggedIn: req.session.loggedIn})
-})
+      const journalists = dbJournalistData.map((journalist) =>
+        journalist.get({ plain: true })
+      );
+      res.render("journalists", {
+        journalists,
+        loggedIn: req.session.loggedIn,
+      });
+    })
     .catch((err) => {
       console.log(err);
       res.status(500).json(err);
