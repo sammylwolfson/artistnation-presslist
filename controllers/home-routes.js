@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const sequelize = require("../config/connection");
 const { Journalist } = require("../models");
+const withAuth = require("../utils/auth");
 
 router.get("/", (req, res) => {
   if (!req.session.loggedIn) {
@@ -20,7 +21,7 @@ router.get("/login", (req, res) => {
   res.render("login");
 });
 
-router.get("/journalists", (req, res) => {
+router.get("/journalists", withAuth, (req, res) => {
   Journalist.findAll({
     attributes: [
       "id",
@@ -31,6 +32,7 @@ router.get("/journalists", (req, res) => {
       "created_at",
       "email",
     ],
+    order: ["first_name"],
   })
     .then((dbJournalistData) => {
       const journalists = dbJournalistData.map((journalist) =>
@@ -47,7 +49,7 @@ router.get("/journalists", (req, res) => {
     });
 });
 
-router.get("/search", (req, res) => {
+router.get("/search", withAuth, (req, res) => {
   console.log("RQ", req.query);
   Journalist.findAll({
     where: req.query,
@@ -60,6 +62,7 @@ router.get("/search", (req, res) => {
       "company",
       "created_at",
     ],
+    order: ["first_name"],
   })
     .then((dbJournalistData) => {
       const journalists = dbJournalistData.map((journalist) =>

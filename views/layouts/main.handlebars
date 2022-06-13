@@ -10,11 +10,13 @@
     />
   </head>
   <body>
-    <nav>
+    <nav
+      class="navbar navbar-expand-lg navbar-light bg-light sticky-top justify-content-end"
+    >
       {{#if loggedIn}}
-        <a href="/">Home</a>
-        <a href="/journalists">Journalists</a>
-        <button id="logout" class="btn-np-style">logout</button>
+        <a href="/" class="navbar-brand">Home</a>
+        <a href="/journalists" class="navbar-brand">Journalists</a>
+        <button id="logout" class="btn bg-dark text-white">logout</button>
       {{/if}}
     </nav>
     <main>
