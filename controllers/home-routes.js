@@ -47,30 +47,10 @@ router.get("/journalists", (req, res) => {
     });
 });
 
-router.post("/search", (req, res) => {
-  let body = {};
-  //if parameter is not null, add property to body object (may need to be !=" ")
-  if (req.body.first_name) {
-    body.first_name = req.body.first_name;
-  }
-  if (req.body.last_name) {
-    body.last_name = req.body.last_name;
-  }
-  if (req.body.city) {
-    body.city = req.body.city;
-  }
-  if (req.body.email) {
-    body.email = req.body.email;
-  }
-  if (req.body.company) {
-    body.company = req.body.company;
-  }
-  if (req.body.date_added) {
-    body.date_added = req.body.date_added;
-  }
-  console.log("body", body);
+router.get("/search", (req, res) => {
+  console.log("RQ", req.query);
   Journalist.findAll({
-    where: body,
+    where: req.query,
     attributes: [
       "id",
       "first_name",
@@ -85,8 +65,6 @@ router.post("/search", (req, res) => {
       const journalists = dbJournalistData.map((journalist) =>
         journalist.get({ plain: true })
       );
-
-      console.log("response", journalists);
       res.render("journalists", {
         journalists,
         loggedIn: req.session.loggedIn,
