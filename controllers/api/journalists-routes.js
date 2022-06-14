@@ -4,7 +4,7 @@ const withAuth = require("../../utils/auth");
 // /api/journalists routes
 
 // get all journalists
-router.get("/", withAuth, (req, res) => {
+router.get("/",(req, res) => {
   Journalist.findAll({
     attributes: [
       "id",
@@ -53,7 +53,7 @@ router.get("/:id", withAuth, (req, res) => {
 });
 
 // get journalists by search for: first name, last name, city, email, company, date added
-router.post("/search", withAuth, (req, res) => {
+router.post("/search", (req, res) => {
   // logic to omit from where if null
   let body = {};
   //if parameter is not null, add property to body object (may need to be !=" ")
@@ -118,7 +118,7 @@ router.post("/", withAuth, (req, res) => {
     });
 });
 // update journalist
-router.put("/:id", withAuth, (req, res) => {
+router.put("/:id", (req, res) => {
   Journalist.update(req.body, {
     where: {
       id: req.params.id,
@@ -138,7 +138,7 @@ router.put("/:id", withAuth, (req, res) => {
 });
 
 // delete journalist
-router.delete("/:id", withAuth, (req, res) => {
+router.delete("/:id", (req, res) => {
   Journalist.destroy({
     where: {
       id: req.params.id,

@@ -1,13 +1,13 @@
-async function searchFormHandler(event) {
+function searchFormHandler(event) {
   event.preventDefault();
 
-  const first_name = document.querySelector("#add-first-name").value.trim();
-  const last_name = document.querySelector("#add-last-name").value.trim();
-  const email = document.querySelector("#add-email").value.trim();
-  const company = document.querySelector("#add-company").value.trim();
-  const city = document.querySelector("#add-city").value.trim();
+  const first_name = document.querySelector("#search-first-name").value.trim();
+  const last_name = document.querySelector("#search-last-name").value.trim();
+  const email = document.querySelector("#search-email").value.trim();
+  const company = document.querySelector("#search-company").value.trim();
+  const city = document.querySelector("#search-city").value.trim();
 
-  const response = await fetch("api/journalists/search", {
+fetch("/api/journalists/search", {
     method: "POST",
     body: JSON.stringify({
       first_name,
@@ -19,13 +19,14 @@ async function searchFormHandler(event) {
     headers: {
       "Content-Type": "application/json",
     },
-  });
-
-  if (response.ok) {
-    // verify the route to all journalists------------------------------------------!!!!!!!!!!!!!
-    document.location("/journalists");
-  }
-}
+  })
+  .then((response)=> response.json())
+  console.log(data)
+  .then((data)=>{
+    const id = (data[0].id)
+    document.location.replace(`/search/${id}`)
+  })
+};
 
 document
   .querySelector(".search-form")
