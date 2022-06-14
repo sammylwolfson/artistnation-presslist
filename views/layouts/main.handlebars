@@ -11,7 +11,22 @@
     <link rel="stylesheet" href="/stylesheets/style.css">
   </head>
   <body>
-    {{{body}}}
+    <nav
+      class="navbar navbar-expand-lg navbar-light bg-light sticky-top justify-content-end"
+    >
+      {{#if loggedIn}}
+        <a href="/" class="navbar-brand">Home</a>
+        <a href="/journalists" class="navbar-brand">Journalists</a>
+        <button id="logout" class="btn bg-dark text-white">logout</button>
+      {{/if}}
+    </nav>
+    <main>
+      {{{body}}}
+
+    </main>
+    {{#if loggedIn}}
+      <script src="/javascript/logout.js"></script>
+    {{/if}}
     <script>
       src =
       "https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js";

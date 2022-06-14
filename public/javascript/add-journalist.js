@@ -23,7 +23,10 @@ async function addFormHandler(event) {
 
   if (response.ok) {
     // SHOULD DOCUMENT RELOAD OR TAKE TO SINGLE PAGE-------------------------------------------!!!!!!!!!!!!!
+    alert("Journalist has been added");
     document.location.reload();
+  } else {
+    alert(response.statusText);
   }
 }
 
