@@ -1,24 +1,31 @@
 <div>
-<h3>Press List Contacts</h3>
+  <h1 class="text-center my-4">Press List Contacts</h1>
 </div>
 
 <ol class="container">
-      <li class="row">
-        <div class="col-2">First Name</div>
-        <div class="col-2">Last Name</div>
-        <div class="col-2">Company</div>
-        <div class="col-2">Email</div>
-        <div class="col-2">City</div>
-        <div class="col-2">Date Added</div>
-    </li>
+  <li class="row justify-content-around my-3 h6">
+    <div class="col-2">First Name</div>
+    <div class="col-2">Last Name</div>
+    <div class="col-2">Company</div>
+    <div class="col-3">Email</div>
+    <div class="col-2">City</div>
+    <div class="col-1">Date Added</div>
+  </li>
+  {{#if journalists}}
     {{#each journalists as |journalist|}}
-    <li class="row">
+      <li class="row justify-content-around">
         <div class="col-2">{{journalist.first_name}}</div>
         <div class="col-2">{{journalist.last_name}}</div>
         <div class="col-2">{{journalist.company}}</div>
-        <div class="col-2">{{journalist.email}}</div>
+        <div class="col-3">{{journalist.email}}</div>
         <div class="col-2">{{journalist.city}}</div>
-        <div class="col-2">{{format_date journalist.created_at}}</div>
-    </li>
-     {{/each}}
+        <div class="col-1">{{format_date journalist.created_at}}</div>
+      </li>
+    {{/each}}
+  {{else}}
+    <div class="row justify-content-center">
+      <h2 class="col-6 my-5">No journalist found matching this criteria.</h2>
+
+    </div>
+  {{/if}}
 </ol>
