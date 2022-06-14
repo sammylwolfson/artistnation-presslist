@@ -1,4 +1,4 @@
-<div>
+{{!-- <div>
   <h1 class="text-center my-4">Press List Contacts</h1>
 </div>
 
@@ -28,4 +28,54 @@
 
     </div>
   {{/if}}
-</ol>
+</ol> --}}
+
+ <div class="container">
+		<div class="table-responsive">
+			<div class="table-wrapper">
+				<div class="table-title">
+					<div class="row">
+						<div class="col-xs-6">
+							<h2><b>Manage Journalists</b></h2>
+						</div>
+						<div class="col-xs-6">					
+						</div>
+					</div>
+				</div>
+				<table class="table table-striped table-hover">
+					<thead>
+						<tr>
+							<th>First Name</th>
+							<th>Last Name</th>
+							<th>Company</th>
+							<th>Email</th>
+							<th>City</th>
+              <th>Date Added</th>
+						</tr>
+					</thead>
+					
+                {{#if journalists}}
+                <tbody>
+                  {{#each journalists as |journalist|}}
+							<tr>
+								</span>
+							</td>
+							<td>{{journalist.first_name}}</td>
+							<td>{{journalist.last_name}}</td>
+							<td>{{journalist.company}}</td>
+              <td>{{journalist.email}}</td>
+							<td>{{journalist.city}}</td>
+              <td>{{format_date journalist.created_at}}</td>
+							<td>
+								<a href="/journalist/{{journalist.id}}" class="edit"><i class="material-icons">&#xE254;</i></a>
+							</tr>
+                  {{/each}}
+                </tbody>
+        </table>
+      </div>
+                  {{else}}
+                    <div class="row justify-content-center">
+                    <h2 class="col-6 my-5">No journalist found matching this criteria.</h2>
+                    </div>
+                {{/if}}
+</div>
