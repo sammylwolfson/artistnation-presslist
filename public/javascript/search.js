@@ -1,4 +1,4 @@
-async function searchFormHandler(event) {
+function searchFormHandler(event) {
   event.preventDefault();
 
   const first_name = document.querySelector("#search-first-name").value.trim();
@@ -61,6 +61,11 @@ async function searchFormHandler(event) {
   //   alert(response.statusText);
   // }
 }
+
+document
+  .querySelector(".search-form")
+  .addEventListener("submit", searchFormHandler);
+
 
 document
   .querySelector(".search-form")

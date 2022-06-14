@@ -1,0 +1,30 @@
+<article class="card">
+  
+  <h2 class="card-header flex-row justify-space-between">
+    Edit Journalist <span><a href="/journalists" class="link">Back To Journalists</a></span>
+  </h2>
+  <form class="edit-journalist-form card-body">
+    <div>
+        <label for="first-name">First Name:</label>
+      <input name="first-name" type="text" class="form-input" value="{{journalist.first_name}}" />
+
+      <label for="last-name">Last Name:</label>
+      <input name="last-name" type="text" class="form-input" value="{{journalist.last_name}}" />
+
+      <label for="company">Company:</label>
+      <input type="text" name="company" class="form-input" value="{{journalist.company}}" />
+
+      <label for="city">City:</label>
+      <input type="text" name="city" class="form-input" value="{{journalist.city}}">
+
+      <label for="email">Email:</label>
+      <input type="text" name="email" class="form-input" value="{{journalist.email}}">
+    </div>
+
+    <button type="submit" class="btn-back">Save Journalist</button>
+    <button type="button" id="delete-journalist-btn" class="btn-back">Delete Journalist</button>
+  </form>
+</article>
+
+<script src="/javascript/edit-journalist.js"></script>
+<script src="/javascript/delete-journalist.js"></script>
