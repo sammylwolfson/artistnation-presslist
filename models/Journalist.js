@@ -1,5 +1,5 @@
-const sequelize = require('../config/connection');
-const { Model, DataTypes, } = require('sequelize')
+const sequelize = require("../config/connection");
+const { Model, DataTypes, Sequelize } = require("sequelize");
 
 class Journalist extends Model {}
 
@@ -8,39 +8,39 @@ Journalist.init({
         type: DataTypes.INTEGER,
         allowNull: false,
         primaryKey: true,
-        autoIncrement: true
+        autoIncrement: true,
     },
     first_name: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
     },
     last_name: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
     },
     company: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: true,
     },
-    created_at: {
-        type: 'TIMESTAMP',
-        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
-        allowNull: false
+    city: {
+        type: DataTypes.STRING,
+        allowNull: true,
     },
     email: {
         type: DataTypes.STRING,
         allowNull: false,
         unique: true,
         validate: {
-            isEmail: true
-        }
+            isEmail: true,
+        },
     },
 }, {
+    underscored: true,
     sequelize,
     timestamps: true,
     freezeTableName: true,
     underscored: true,
-    modelName: 'journalist'
-})
+    modelName: "journalist",
+});
 
 module.exports = Journalist;
