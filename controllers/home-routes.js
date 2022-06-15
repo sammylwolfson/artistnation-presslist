@@ -71,6 +71,7 @@ router.get("/search", withAuth, (req, res) => {
       res.render("journalists", {
         journalists,
         loggedIn: req.session.loggedIn,
+        search: true
       });
     })
     .catch((err) => {
@@ -79,7 +80,7 @@ router.get("/search", withAuth, (req, res) => {
     });
 });
 
-router.get('/journalist/:id', (req, res)=>{
+router.get('/edit/journalist/:id', (req, res)=>{
   Journalist.findOne({
     where: {
       id: req.params.id

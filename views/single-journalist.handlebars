@@ -1,7 +1,7 @@
-<article class="card">
+<article class="container mt-5">
   
-  <h2 class="card-header flex-row justify-space-between">
-    Edit Journalist <span><a href="/journalists" class="link">Back To Journalists</a></span>
+  <h2 class="flex-row justify-space-between d-flex align-items-center">
+    Edit Journalist <span><a href="/journalists" class="btn-back text-light">Back To Journalists</a></span>
   </h2>
   <form class="edit-journalist-form card-body">
     <div>
@@ -20,9 +20,8 @@
       <label for="email">Email:</label>
       <input type="text" name="email" class="form-input" value="{{journalist.email}}">
     </div>
-
-    <button type="submit" class="btn-back text-white">Save Journalist</button>
-    <button type="button" id="delete-journalist-btn" class="btn-back bg-danger text-white">Delete Journalist</button>
+        <button type="submit" class="btn-back text-white">Save Journalist</button>
+        <button type="button" id="delete-journalist-btn" class="btn-back bg-danger text-white">Delete Journalist</button>
   </form>
 </article>
 

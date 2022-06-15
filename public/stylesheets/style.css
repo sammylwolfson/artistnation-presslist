@@ -210,6 +210,10 @@ p {
   min-height: 150px;
 }
 
+.title {
+  margin-bottom: 1rem;
+}
+
 h4 {
   font-weight: 700;
   margin: 0;
@@ -260,7 +264,7 @@ footer {
 .form-input {
   width: 100%;
   padding: 0.5%;
-  margin: 5px 0;
+  margin: 5px 0 15px 0;
   font-size: 1.2rem;
   border: 2px solid var(--light-dark);
   border-radius: var(--border-radius);
