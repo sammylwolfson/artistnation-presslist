@@ -31,41 +31,11 @@ function searchFormHandler(event) {
   console.log("QS", queryString);
 
   document.location.replace(queryString);
-
-  // const response = await fetch(queryString, {
-  //   method: "GET",
-  //   headers: {
-  //     "Content-Type": "application/json",
-  //   },
-  // });
-
-  // const response = await fetch('/api/journalists/search', {
-  //   method: "POST",
-  //   body:
-  //     JSON.stringify({
-  //       first_name,
-  //       last_name,
-  //       email,
-  //       company,
-  //       city
-  //     }),
-  //   headers: {
-  //     "Content-Type": "application/json",
-  //   }
-  // });
-
-  // if (response.ok) {
-  //   // verify the route to all journalists------------------------------------------!!!!!!!!!!!!!
-  //   document.location.replace("/search");
-  // } else {
-  //   alert(response.statusText);
-  // }
 }
 
 document
   .querySelector(".search-form")
   .addEventListener("submit", searchFormHandler);
-
 
 document
   .querySelector(".search-form")
