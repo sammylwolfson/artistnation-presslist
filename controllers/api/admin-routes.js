@@ -7,7 +7,6 @@ const withAuth = require("../../utils/auth");
 //get all admin
 router.get("/", (req, res) => {
   Admin.findAll({
-    attributes: { exclude: ["password"] },
   })
     .then((dbAdminData) => res.status(200).json(dbAdminData))
     .catch((err) => {
@@ -19,7 +18,6 @@ router.get("/", (req, res) => {
 // get admin by id
 router.get("/:id", (req, res) => {
   Admin.findOne({
-    attributes: { exclude: ["password"] },
     where: {
       id: req.params.id,
     },
