@@ -14,12 +14,12 @@
 	<table class="table table-striped table-hover">
 		<thead>
 			<tr>
-				<th>First Name</th>
-				<th>Last Name</th>
-				<th>Company</th>
-				<th>Email</th>
-				<th>City</th>
-					<th>Date Added</th>
+				<th id="sort-first-name">First Name</th>
+				<th id="sort-last-name">Last Name</th>
+				<th id="sort-company">Company</th>
+				<th id="sort-email">Email</th>
+				<th id="sort-city">City</th>
+				<th id="sort-date-added">Date Added</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -38,6 +38,7 @@
 			{{/each}}
 		</tbody>
 	</table>
+    <a class="btn" href="mailto:?bcc={{#each journalists as |journalist|}} {{journalist.email}},{{/each}}">Email All Journalist</a>
 </div>
 {{else}}
 <div class="row justify-content-center ms-5">
@@ -47,3 +48,4 @@
 	<a href="/" class="btn-back text-light me-5">Back To Search</a>
 </div>
 {{/if}}
+<script src="/javascript/sort.js"></script>
