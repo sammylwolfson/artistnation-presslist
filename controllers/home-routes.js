@@ -71,7 +71,7 @@ router.get("/search", withAuth, (req, res) => {
       res.render("journalists", {
         journalists,
         loggedIn: req.session.loggedIn,
-        search: true
+        search: true,
       });
     })
     .catch((err) => {
@@ -80,10 +80,14 @@ router.get("/search", withAuth, (req, res) => {
     });
 });
 
+<<<<<<< HEAD
 router.get('/edit/journalist/:id', withAuth, (req, res)=>{
+=======
+router.get("/edit/journalist/:id", (req, res) => {
+>>>>>>> af2a07dc24b065ec621544ae87559471a1508b25
   Journalist.findOne({
     where: {
-      id: req.params.id
+      id: req.params.id,
     },
     attributes: [
       "id",
@@ -93,27 +97,33 @@ router.get('/edit/journalist/:id', withAuth, (req, res)=>{
       "city",
       "created_at",
       "email",
-    ]
+    ],
   })
-  .then(dbJournalistData=>{
-    if(!dbJournalistData){
-      res.status(404).json({ message: 'No journalist found with that id' });
-      return;
-    }
-    const journalist = dbJournalistData.get({ plain: true });
-    res.render(
-      'single-journalist',
-       {
+    .then((dbJournalistData) => {
+      if (!dbJournalistData) {
+        res.status(404).json({ message: "No journalist found with that id" });
+        return;
+      }
+      const journalist = dbJournalistData.get({ plain: true });
+      res.render("single-journalist", {
         journalist,
-        loggedIn: true
-      })
-  })
-  .catch(err=>{
-    console.log(err);
-    res.status(500).json(err);
-  });
+        loggedIn: true,
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
 
-
+router.get("/settings", (req, res) => {
+  if (!req.session.loggedIn) {
+    res.redirect("/login");
+    return;
+  }
+  res.render("settings", {
+    loggedIn: req.session.loggedIn,
+  });
+});
 
 module.exports = router;
