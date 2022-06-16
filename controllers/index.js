@@ -9,7 +9,11 @@ router.use("/sort", sortRoutes);
 
 // if a request is made to endpoint that doesn't exist, a 404 error will occur
 router.use((req, res) => {
-  res.status(404).end();
+  if (!req.session.id){
+    res.redirect('/login');
+  } else {
+    res.redirect('/');
+  }
 });
 
 module.exports = router;
