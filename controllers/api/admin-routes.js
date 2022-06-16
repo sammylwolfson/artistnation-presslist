@@ -49,6 +49,7 @@ router.post("/", (req, res) => {
         req.session.username = dbAdminData.username;
         req.session.loggedIn = true;
 
+        console.log(dbAdminData)
         res.json(dbAdminData);
       });
     })

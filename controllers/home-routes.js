@@ -1,15 +1,13 @@
 const router = require("express").Router();
 const sequelize = require("../config/connection");
-const { Journalist } = require("../models");
+const { Journalist, Admin } = require("../models");
+const withAdminAuth = require("../utils/adminAuth");
 const withAuth = require("../utils/auth");
 
-router.get("/", (req, res) => {
-  if (!req.session.loggedIn) {
-    res.redirect("/login");
-    return;
-  }
+router.get("/", withAuth, (req, res) => {
   res.render("homepage", {
     loggedIn: req.session.loggedIn,
+    mainAdmin: req.mainAdmin
   });
 });
 
@@ -41,6 +39,7 @@ router.get("/journalists", withAuth, (req, res) => {
       res.render("journalists", {
         journalists,
         loggedIn: req.session.loggedIn,
+        mainAdmin: req.mainAdmin
       });
     })
     .catch((err) => {
@@ -119,6 +118,25 @@ router.get("/settings", (req, res) => {
   }
   res.render("settings", {
     loggedIn: req.session.loggedIn,
+  });
+});
+
+
+router.get('/admins', withAdminAuth, (req, res)=>{
+  Admin.findAll({
+    attributes: { exlude: ['password'] }
+  })
+  .then((dbAdminData) => {
+    const admins = dbAdminData.map(admin=>admin.get({ plain: true }))
+    res.render('admins', { 
+      admins,
+      loggedIn: true,
+      mainAdmin: req.mainAdmin
+     })
+  })
+  .catch((err) => {
+    console.log(err);
+    res.status(500).json(err);
   });
 });
 
