@@ -121,7 +121,7 @@ router.post("/", withAuth, (req, res) => {
 router.put("/:id", (req, res) => {
   Journalist.update(req.body, {
     where: {
-      id: req.params.id,
+      id: req.params.id
     },
   })
     .then((dbJournalistData) => {
@@ -138,10 +138,10 @@ router.put("/:id", (req, res) => {
 });
 
 // delete journalist
-router.delete("/:id", withAuth, (req, res) => {
+router.delete("/:id", withAuth, (req, res) =>{
   Journalist.destroy({
     where: {
-      id: req.params.id,
+      id: req.params.id
     },
   })
     .then((dbJournalistData) => {
