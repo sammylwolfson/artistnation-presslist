@@ -71,6 +71,7 @@ router.get("/search", withAuth, (req, res) => {
         journalists,
         loggedIn: req.session.loggedIn,
         search: true,
+        mainAdmin: req.mainAdmin
       });
     })
     .catch((err) => {
@@ -103,6 +104,7 @@ router.get('/edit/journalist/:id', withAuth, (req, res)=>{
       res.render("single-journalist", {
         journalist,
         loggedIn: true,
+        mainAdmin: req.mainAdmin
       });
     })
     .catch((err) => {
@@ -111,13 +113,14 @@ router.get('/edit/journalist/:id', withAuth, (req, res)=>{
     });
 });
 
-router.get("/settings", (req, res) => {
+router.get("/settings", withAuth, (req, res) => {
   if (!req.session.loggedIn) {
     res.redirect("/login");
     return;
   }
   res.render("settings", {
     loggedIn: req.session.loggedIn,
+    mainAdmin: req.mainAdmin
   });
 });
 
