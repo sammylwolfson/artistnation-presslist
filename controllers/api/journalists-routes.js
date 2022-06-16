@@ -53,7 +53,7 @@ router.get("/:id", withAuth, (req, res) => {
 });
 
 // get journalists by search for: first name, last name, city, email, company, date added
-router.post("/search", (req, res) => {
+router.post("/search", withAuth, (req, res) => {
   // logic to omit from where if null
   let body = {};
   //if parameter is not null, add property to body object (may need to be !=" ")
@@ -75,7 +75,6 @@ router.post("/search", (req, res) => {
   if (req.body.date_added) {
     body.date_added = req.body.date_added;
   }
-  console.log("body", body);
   Journalist.findAll({
     where: body,
     attributes: [
@@ -110,7 +109,7 @@ router.post("/", withAuth, (req, res) => {
     last_name: req.body.last_name,
     company: req.body.company,
     email: req.body.email,
-    city: req.body.city,
+    city: req.body.city
   })
     .then((dbJournalistData) => res.json(dbJournalistData))
     .catch((err) => {
