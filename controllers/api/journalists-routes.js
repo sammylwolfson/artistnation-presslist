@@ -4,7 +4,7 @@ const withAuth = require("../../utils/auth");
 // /api/journalists routes
 
 // get all journalists
-router.get("/",(req, res) => {
+router.get("/", withAuth, (req, res) => {
   Journalist.findAll({
     attributes: [
       "id",
@@ -138,7 +138,7 @@ router.put("/:id", (req, res) => {
 });
 
 // delete journalist
-router.delete("/:id", (req, res) => {
+router.delete("/:id", withAuth, (req, res) => {
   Journalist.destroy({
     where: {
       id: req.params.id,

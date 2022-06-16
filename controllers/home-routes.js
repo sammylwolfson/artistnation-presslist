@@ -80,7 +80,7 @@ router.get("/search", withAuth, (req, res) => {
     });
 });
 
-router.get('/edit/journalist/:id', (req, res)=>{
+router.get('/edit/journalist/:id', withAuth, (req, res)=>{
   Journalist.findOne({
     where: {
       id: req.params.id
