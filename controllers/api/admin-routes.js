@@ -60,7 +60,7 @@ router.post("/", (req, res) => {
 
 // admin login
 router.post("/login", (req, res) => {
-  console.log(req.body)
+  console.log(req.body);
   Admin.findOne({
     where: {
       username: req.body.username,
@@ -97,16 +97,19 @@ router.post("/logout", (req, res) => {
   }
 });
 
-// update admin
-router.put("/:id", withAuth, (req, res) => {
-  Admin.update({
-    username: req.body.username,
-    password: req.body.password,
-    individualHooks: true,
-    where: {
-      id: req.params.id,
+// change password
+router.put("/password", withAuth, (req, res) => {
+  Admin.update(
+    {
+      password: req.body.new_password,
     },
-  })
+    {
+      individualHooks: true,
+      where: {
+        id: req.session.user_id,
+      },
+    }
+  )
     .then((dbAdminData) => {
       if (!dbAdminData[0]) {
         res.status(404).json({ message: "No admin found with this id" });
