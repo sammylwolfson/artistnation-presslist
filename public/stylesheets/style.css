@@ -16,6 +16,7 @@ a:link {
 }
 a:visited {
   text-decoration: none;
+  background-color: var(--tertiary);
 }
 a:hover {
   text-decoration: none;
@@ -23,6 +24,7 @@ a:hover {
 }
 a:active {
   text-decoration: none;
+  background-color: var(--tertiary);
 }
 
 * {
