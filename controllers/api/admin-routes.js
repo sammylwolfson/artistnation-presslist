@@ -38,12 +38,16 @@ router.get("/:id", (req, res) => {
 });
 
 // create admin
-router.post("/", (req, res) => {
+router.post("/", withAuth, (req, res) => {
   Admin.create({
     username: req.body.username,
     password: req.body.password,
   })
     .then((dbAdminData) => {
+      if (req.session.mainAdmin) {
+        res.redirect('/admins');
+        return;
+      }
       req.session.save(() => {
         req.session.user_id = dbAdminData.id;
         req.session.username = dbAdminData.username;
