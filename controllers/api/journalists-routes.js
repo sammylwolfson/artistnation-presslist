@@ -52,6 +52,7 @@ router.get("/:id", withAuth, (req, res) => {
     });
 });
 
+
 // get journalists by search for: first name, last name, city, email, company, date added
 router.post("/search", withAuth, (req, res) => {
   // logic to omit from where if null
