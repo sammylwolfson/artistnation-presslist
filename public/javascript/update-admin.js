@@ -24,6 +24,31 @@ async function updatePasswordHandler(event) {
   }
 }
 
+async function updateUsernameHandler(event) {
+  event.preventDefault();
+
+  const username = document.querySelector("#new-username").value;
+
+  const response = await fetch(`/api/admin/username`, {
+    method: "PUT",
+    body: JSON.stringify({
+      username,
+    }),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  if (response.ok) {
+    alert("Username has been updated");
+    document.location.replace("/");
+  }
+}
+
 document
   .querySelector(".change-password-form")
   .addEventListener("submit", updatePasswordHandler);
+
+document
+  .querySelector(".change-username-form")
+  .addEventListener("submit", updateUsernameHandler);

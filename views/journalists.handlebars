@@ -41,11 +41,11 @@
     <a class="btn" href="mailto:?bcc={{#each journalists as |journalist|}} {{journalist.email}},{{/each}}">Email All Journalist</a>
 </div>
 {{else}}
-<div class="row justify-content-center ms-5">
-	<h2 class="col-6 my-5">No journalist found matching this criteria.</h2>
+<div class="row justify-content-center my-5">
+	<h2 class="col-6 text-center">No journalist found matching this criteria.</h2>
 </div>
 <div class="row justify-content-center">
-	<a href="/" class="btn-back text-light me-5">Back To Search</a>
+	<a href="/" class="btn-back text-light">Back To Search</a>
 </div>
 {{/if}}
 <script src="/javascript/sort.js"></script>

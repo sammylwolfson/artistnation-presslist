@@ -25,6 +25,10 @@
             href="/journalists"
             class="navbar-brand text-white mx-4"
           >Journalists</a>
+          {{#if mainAdmin}}
+          <a href="/admins"
+          class="navbar-brand text-white mx-4">Admins</a>
+          {{/if}}
         </div>
         <div class="row">
           <a href="/settings" class="text-white p-3 col"><i class="material-icons">&#xe8b8;</i></a>

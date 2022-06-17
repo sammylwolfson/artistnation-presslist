@@ -38,17 +38,22 @@ router.get("/:id", (req, res) => {
 });
 
 // create admin
-router.post("/", (req, res) => {
+router.post("/", withAuth, (req, res) => {
   Admin.create({
     username: req.body.username,
     password: req.body.password,
   })
     .then((dbAdminData) => {
+      if (req.session.mainAdmin) {
+        res.redirect('/admins');
+        return;
+      }
       req.session.save(() => {
         req.session.user_id = dbAdminData.id;
         req.session.username = dbAdminData.username;
         req.session.loggedIn = true;
 
+        console.log(dbAdminData);
         res.json(dbAdminData);
       });
     })
@@ -105,6 +110,31 @@ router.put("/password", withAuth, (req, res) => {
     },
     {
       individualHooks: true,
+      where: {
+        id: req.session.user_id,
+      },
+    }
+  )
+    .then((dbAdminData) => {
+      if (!dbAdminData[0]) {
+        res.status(404).json({ message: "No admin found with this id" });
+        return;
+      }
+      res.status(200).json(dbAdminData);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+// change username
+router.put("/username", withAuth, (req, res) => {
+  Admin.update(
+    {
+      username: req.body.username,
+    },
+    {
       where: {
         id: req.session.user_id,
       },

@@ -1,15 +1,13 @@
 const router = require("express").Router();
 const sequelize = require("../config/connection");
-const { Journalist } = require("../models");
+const { Journalist, Admin } = require("../models");
+const withAdminAuth = require("../utils/adminAuth");
 const withAuth = require("../utils/auth");
 
-router.get("/", (req, res) => {
-  if (!req.session.loggedIn) {
-    res.redirect("/login");
-    return;
-  }
+router.get("/", withAuth, (req, res) => {
   res.render("homepage", {
     loggedIn: req.session.loggedIn,
+    mainAdmin: req.session.mainAdmin,
   });
 });
 
@@ -41,6 +39,7 @@ router.get("/journalists", withAuth, (req, res) => {
       res.render("journalists", {
         journalists,
         loggedIn: req.session.loggedIn,
+        mainAdmin: req.session.mainAdmin,
       });
     })
     .catch((err) => {
@@ -72,6 +71,7 @@ router.get("/search", withAuth, (req, res) => {
         journalists,
         loggedIn: req.session.loggedIn,
         search: true,
+        mainAdmin: req.session.mainAdmin,
       });
     })
     .catch((err) => {
@@ -80,7 +80,7 @@ router.get("/search", withAuth, (req, res) => {
     });
 });
 
-router.get('/edit/journalist/:id', withAuth, (req, res)=>{
+router.get("/edit/journalist/:id", withAuth, (req, res) => {
   Journalist.findOne({
     where: {
       id: req.params.id,
@@ -104,6 +104,7 @@ router.get('/edit/journalist/:id', withAuth, (req, res)=>{
       res.render("single-journalist", {
         journalist,
         loggedIn: true,
+        mainAdmin: req.session.mainAdmin,
       });
     })
     .catch((err) => {
@@ -112,14 +113,46 @@ router.get('/edit/journalist/:id', withAuth, (req, res)=>{
     });
 });
 
-router.get("/settings", (req, res) => {
+router.get("/settings", withAuth, (req, res) => {
   if (!req.session.loggedIn) {
     res.redirect("/login");
     return;
   }
-  res.render("settings", {
-    loggedIn: req.session.loggedIn,
+  Admin.findOne({
+    where: {
+      id: req.session.user_id,
+    },
+  }).then((dbAdminData) => {
+    if (!dbAdminData) {
+      res.status(404).json({ message: "No user found with this id" });
+      return;
+    }
+    const admin = dbAdminData.get({ plain: true });
+
+    res.render("settings", {
+      loggedIn: req.session.loggedIn,
+      mainAdmin: req.session.mainAdmin,
+      admin,
+    });
   });
+});
+
+router.get("/admins", withAdminAuth, (req, res) => {
+  Admin.findAll({
+    attributes: { exlude: ["password"] },
+  })
+    .then((dbAdminData) => {
+      const admins = dbAdminData.map((admin) => admin.get({ plain: true }));
+      res.render("admins", {
+        admins,
+        loggedIn: true,
+        mainAdmin: req.session.mainAdmin,
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
 
 module.exports = router;

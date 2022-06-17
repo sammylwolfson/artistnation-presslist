@@ -1,0 +1,56 @@
+<form class="add-form row my-5">
+  <h2 class="col px-5 text-center mb-3"><b>Create Admin</b></h2>
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <input
+        id="add-username"
+        class="form-control-lg mb-3 form-input"
+        name="add-username"
+        placeholder="Username"
+      />
+      <input
+        id="add-password"
+        type="password"
+        class="form-control-lg mb-3 form-input"
+        name="add-password"
+        placeholder="Password"
+      />
+      <button type="submit" id="add-btn" class="btn form-control-lg mb-3">Create
+        Admin</button>
+    </div>
+  </div>
+</form>
+
+  <div class="table-wrapper row justify-content-center">
+    <div class="col-md-6">
+      <div class="table-title title">
+        <div class="row">
+          <div class="col-xs-6">
+            <h2 class="text-center"><b>Manage Admins</b></h2>
+          </div>
+        </div>
+      </div>
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th id="sort-id">ID</th>
+            <th id="sort-username">Username</th>
+          </tr>
+        </thead>
+        <tbody class="admin-table">
+          {{#each admins as |admin|}}
+            <tr>
+              <td>{{admin.id}}</td>
+              <td class="w-25">{{admin.username}}</td>
+              <td>
+                <i class="material-icons btn">&#xE872;</i>
+              </td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+<script src="/javascript/add-admin.js"></script>
+<script src="/javascript/delete-admin.js"></script>
