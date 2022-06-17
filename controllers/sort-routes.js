@@ -26,7 +26,7 @@ router.get("/first_name", withAuth, (req, res) => {
       res.render("journalists", {
         journalists,
         loggedIn: req.session.loggedIn,
-        mainAdmin: req.mainAdmin
+        mainAdmin: req.session.mainAdmin
       });
     })
     .catch((err) => {
@@ -56,7 +56,7 @@ router.get("/last_name", withAuth, (req, res) => {
       res.render("journalists", {
         journalists,
         loggedIn: req.session.loggedIn,
-        mainAdmin: req.mainAdmin
+        mainAdmin: req.session.mainAdmin
       });
     })
     .catch((err) => {
@@ -86,7 +86,7 @@ router.get("/company", withAuth, (req, res) => {
       res.render("journalists", {
         journalists,
         loggedIn: req.session.loggedIn,
-        mainAdmin: req.mainAdmin
+        mainAdmin: req.session.mainAdmin
       });
     })
     .catch((err) => {
@@ -116,7 +116,7 @@ router.get("/email", withAuth, (req, res) => {
       res.render("journalists", {
         journalists,
         loggedIn: req.session.loggedIn,
-        mainAdmin: req.mainAdmin
+        mainAdmin: req.session.mainAdmin
       });
     })
     .catch((err) => {
@@ -146,7 +146,7 @@ router.get("/city", withAuth, (req, res) => {
       res.render("journalists", {
         journalists,
         loggedIn: req.session.loggedIn,
-        mainAdmin: req.mainAdmin
+        mainAdmin: req.session.mainAdmin
       });
     })
     .catch((err) => {
@@ -176,7 +176,7 @@ router.get("/date_added", withAuth, (req, res) => {
       res.render("journalists", {
         journalists,
         loggedIn: req.session.loggedIn,
-        mainAdmin: req.mainAdmin
+        mainAdmin: req.session.mainAdmin
       });
     })
     .catch((err) => {

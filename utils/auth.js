@@ -3,7 +3,7 @@ const withAuth = (req, res, next) => {
         res.redirect('/login');
     } 
     else if(req.session.user_id === 1) {
-        req.mainAdmin = true;
+        req.session.mainAdmin = true;
         next();
     } 
     else {

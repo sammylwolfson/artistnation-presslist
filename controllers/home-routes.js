@@ -7,7 +7,7 @@ const withAuth = require("../utils/auth");
 router.get("/", withAuth, (req, res) => {
   res.render("homepage", {
     loggedIn: req.session.loggedIn,
-    mainAdmin: req.mainAdmin
+    mainAdmin: req.session.mainAdmin
   });
 });
 
@@ -39,7 +39,7 @@ router.get("/journalists", withAuth, (req, res) => {
       res.render("journalists", {
         journalists,
         loggedIn: req.session.loggedIn,
-        mainAdmin: req.mainAdmin
+        mainAdmin: req.session.mainAdmin
       });
     })
     .catch((err) => {
@@ -71,7 +71,7 @@ router.get("/search", withAuth, (req, res) => {
         journalists,
         loggedIn: req.session.loggedIn,
         search: true,
-        mainAdmin: req.mainAdmin
+        mainAdmin: req.session.mainAdmin
       });
     })
     .catch((err) => {
@@ -104,7 +104,7 @@ router.get('/edit/journalist/:id', withAuth, (req, res)=>{
       res.render("single-journalist", {
         journalist,
         loggedIn: true,
-        mainAdmin: req.mainAdmin
+        mainAdmin: req.session.mainAdmin
       });
     })
     .catch((err) => {
@@ -120,7 +120,7 @@ router.get("/settings", withAuth, (req, res) => {
   }
   res.render("settings", {
     loggedIn: req.session.loggedIn,
-    mainAdmin: req.mainAdmin
+    mainAdmin: req.session.mainAdmin
   });
 });
 
@@ -134,7 +134,7 @@ router.get('/admins', withAdminAuth, (req, res)=>{
     res.render('admins', { 
       admins,
       loggedIn: true,
-      mainAdmin: req.mainAdmin
+      mainAdmin: req.session.mainAdmin
      })
   })
   .catch((err) => {
