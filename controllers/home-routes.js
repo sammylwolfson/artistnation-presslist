@@ -70,7 +70,6 @@ router.get("/search", withAuth, (req, res) => {
       res.render("journalists", {
         journalists,
         loggedIn: req.session.loggedIn,
-        search: true,
         mainAdmin: req.session.mainAdmin,
       });
     })
