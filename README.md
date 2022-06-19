@@ -37,7 +37,7 @@ npm run seeds
 
 ![screenshot](./public/images/screenshot.png)
 </br>
-The application allows admins the ability to login and manage a press list. Once logged in, on the homepage admins have the ability to add a journalist to the press list. They have the option to search the press list based on first name, last name, company, email and or city, with an auto-complete feature for each field, or they can view all the journalist using the journalist tab. The entire press list or the refined searched press list can be sorted in ascending order by all categories and give the option to email a single journalist, or all of the journalist listed through their email browser. There is a settings feature for the admin to change their username and password, and a single designated admin has the option to manage other admins, with ability to add and delete other admins.
+The application allows admins the ability to login and manage a press list. Once logged in, on the homepage admins have the ability to add a journalist to the press list. They have the option to search the press list based on first name, last name, company, email and or city, with an auto-complete feature for each field, or they can view all the journalist using the journalist tab. The entire press list or the refined searched press list can be sorted in ascending order by all categories and give the option to email a single journalist, or all of the journalist listed through their email browser. They have the ability to edit or delete each journalist. There is a settings feature for the admin to change their username and password, and a single designated admin has the option to manage other admins, with ability to add and delete other admins.
 </br>
 
 ## License
