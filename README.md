@@ -28,7 +28,7 @@ npm install
 Use the following command to seed the database:
 
 ```
-npm run seed
+npm run seeds
 ```
 
   <br>
