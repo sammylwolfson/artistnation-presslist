@@ -34,7 +34,11 @@
 			{{/each}}
 		</tbody>
 	</table>
-    <a class="btn" href="mailto:?bcc={{#each journalists as |journalist|}} {{journalist.email}},{{/each}}">Email All Journalist</a>
+    <a class="btn" href="mailto:?bcc=
+		{{#each journalists as |journalist|}}
+		{{journalist.email}},{{/each}}">
+		Email All Journalist
+	</a>
 </div>
 {{else}}
 <div class="row justify-content-center my-5">
