@@ -141,6 +141,7 @@ router.get("/admins", withAdminAuth, (req, res) => {
     attributes: { exlude: ["password"] },
   })
     .then((dbAdminData) => {
+      dbAdminData.shift()
       const admins = dbAdminData.map((admin) => admin.get({ plain: true }));
       res.render("admins", {
         admins,
